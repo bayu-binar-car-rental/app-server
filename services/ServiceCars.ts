@@ -23,8 +23,8 @@ class ServiceCars {
     return await this._repoCars.find(id);
   }
 
-  async delete(id: number) {
-    const car = await this._repoCars.delete(id);
+  async remove(id: number) {
+    const car = await this._repoCars.remove(id);
     return car;
   }
 

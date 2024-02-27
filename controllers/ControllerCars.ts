@@ -1,6 +1,7 @@
 import ServiceCars from "../services/ServiceCars";
-import { Request, Response } from "express";
 import Cars, { ICars } from "../models/Cars";
+import { Request, Response } from "express";
+import media from "../utils/upload";
 
 export default class ControllerCars {
   private _serviceCars: ServiceCars;
@@ -105,11 +106,11 @@ export default class ControllerCars {
     };
   }
 
-  delete() {
+  remove() {
     return async (req: Request, res: Response) => {
       try {
         const id = +req.params?.id;
-        const result = await this._serviceCars.delete(id);
+        const result = await this._serviceCars.remove(id);
 
         if (!result) {
           res.status(404).json({
@@ -162,6 +163,64 @@ export default class ControllerCars {
         });
       } catch (error) {
         console.log(error);
+      }
+    };
+  }
+
+  upload() {
+    return async (req: Request, res: Response) => {
+      console.log("Running upload function");
+      try {
+        if (req.file) {
+          console.log(req.file);
+          const fileBase64 = req.file.buffer.toString("base64");
+          const file = `data:${req.file.mimetype};base64,${fileBase64}`;
+          const resultUpload = await media.storage.uploader.upload(
+            file,
+            (err, result) => {
+              if (err) {
+                return res.status(403).json({
+                  meta: {
+                    code: 403,
+                    success: false,
+                    message: "failed",
+                  },
+                  data: "Failed upload to storage",
+                });
+              }
+
+              return result;
+            }
+          );
+
+          return res.status(200).json({
+            meta: {
+              code: 200,
+              success: true,
+              message: "success",
+            },
+            data: resultUpload,
+          });
+        }
+
+        res.status(404).json({
+          meta: {
+            code: 404,
+            success: false,
+            message: "failed",
+          },
+          data: "file not found",
+        });
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({
+          meta: {
+            code: 500,
+            success: false,
+            message: "failed",
+          },
+          data: "Upload failed",
+        });
       }
     };
   }

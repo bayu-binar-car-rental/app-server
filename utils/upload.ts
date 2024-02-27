@@ -1,21 +1,26 @@
+import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
-import path from "path";
 
-const publicDir = path.join(__dirname, "..", "public");
-const uploadDir = path.join(publicDir, "images");
+class Media {
+  private _upload;
+  private _storage;
+  constructor() {
+    this._upload = multer({ storage: multer.memoryStorage() });
+    cloudinary.config({
+      cloud_name: "dvncokkpe",
+      api_key: "888438261624348",
+      api_secret: "8eW-bqIShHq1hH6n9Ik8ql6sBCA",
+    });
+    this._storage = cloudinary;
+  }
 
-// Define a way to upload image
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() + 1e9);
-    cb(
-      null,
-      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
-    );
-  },
-});
+  get upload() {
+    return this._upload;
+  }
 
-export default multer({ storage });
+  get storage() {
+    return this._storage;
+  }
+}
+
+export default new Media();

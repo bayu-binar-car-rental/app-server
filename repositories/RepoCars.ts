@@ -33,7 +33,7 @@ class RepoCars {
     return car;
   }
 
-  async delete(id: number) {
+  async remove(id: number) {
     const car = await Cars.query().deleteById(id);
     return car;
   }

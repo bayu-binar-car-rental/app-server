@@ -1,4 +1,5 @@
 import { Router } from "express";
+import media from "../../utils/upload";
 
 // Controllers
 import ControllerCars from "../../controllers/ControllerCars";
@@ -21,6 +22,11 @@ router.get("/cars", controllerCars.list());
 router.post("/cars", controllerCars.create());
 router.get("/cars/:id", controllerCars.find());
 router.patch("/cars/:id", controllerCars.update());
-router.delete("/cars/:id", controllerCars.delete());
+router.delete("/cars/:id", controllerCars.remove());
+router.post(
+  "/cars/upload",
+  media.upload.single("image"),
+  controllerCars.upload()
+);
 
 export default router;

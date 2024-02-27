@@ -10,6 +10,12 @@ export default class ControllerCars {
     this._serviceCars = serviceCars;
   }
 
+  root() {
+    return async (req: Request, res: Response) => {
+      res.json({ message: "Hi there!" });
+    };
+  }
+
   list() {
     return async (req: Request, res: Response) => {
       try {

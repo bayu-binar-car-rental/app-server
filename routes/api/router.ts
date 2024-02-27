@@ -18,6 +18,7 @@ const serviceCars = new ServiceCars(repoCars);
 const controllerCars = new ControllerCars(serviceCars);
 
 // cars
+router.get("/", controllerCars.root());
 router.get("/cars", controllerCars.list());
 router.post("/cars", controllerCars.create());
 router.get("/cars/:id", controllerCars.find());

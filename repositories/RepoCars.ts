@@ -25,7 +25,7 @@ class RepoCars {
       if (params.size === "small") {
         cars.where("capacity", "<=", 2).andWhere("capacity", ">", 0);
       } else if (params.size === "medium") {
-        cars.where("capacity", "<=", 4);
+        cars.where("capacity", "<=", 4).andWhere("capacity", ">", 2);
       } else if (params.size === "large") {
         cars.where("capacity", ">", 4);
       }

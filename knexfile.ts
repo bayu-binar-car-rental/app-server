@@ -6,15 +6,13 @@ const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
     connection: {
-      connectionString:
-        "postgres://binar_car_rental_api_bayu:eOix6VWrSZXy0Sp@binar-car-rental-server-db-bayu.flycast:5432/binar_car_rental_api_bayu?sslmode=disable",
+      connectionString: process.env.DATABASE_URL,
     },
   },
   production: {
     client: "postgresql",
     connection: {
-      connectionString:
-        "postgres://binar_car_rental_api_bayu:eOix6VWrSZXy0Sp@binar-car-rental-server-db-bayu.flycast:5432/binar_car_rental_api_bayu?sslmode=disable",
+      connectionString: process.env.DATABASE_URL,
     },
   },
   // development: {

@@ -13,6 +13,7 @@ export default class ControllerCars {
   root() {
     return (req: Request, res: Response) => {
       console.log(process.env.DATABASE_URL);
+      console.log(typeof process.env.DATABASE_URL);
       res.json({
         message: "Hi there! This is a CDed version & updated connection",
       });

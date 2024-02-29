@@ -1,4 +1,8 @@
 import knex, { Knex } from "knex";
+import path from "path";
+
+import dotenv from "dotenv";
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 class Database {
   private static instance: Database;
@@ -6,14 +10,9 @@ class Database {
 
   constructor() {
     this._db = knex({
-      client: "postgresql",
-      // connection: {
-      //   database: "chapter_6",
-      //   user: "tama",
-      //   password: "ironman",
-      // },
+      client: "pg",
       connection: {
-        connectionString: process.env.DATABASE_URL,
+        connectionString: process.env.DATABASE_URL as string,
       },
     });
   }

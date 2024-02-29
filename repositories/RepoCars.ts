@@ -3,6 +3,7 @@ import Cars, { ICars } from "../models/Cars";
 export interface IParams {
   search?: string;
   availableOnly?: boolean;
+  size?: string;
 }
 
 class RepoCars {
@@ -18,6 +19,16 @@ class RepoCars {
       cars
         .whereILike("manufacture", `${params?.search}%`)
         .orWhereILike("model", `${params?.search}%`);
+    }
+
+    if (params?.size) {
+      if (params.size === "small") {
+        cars.where("capacity", "<=", 2).andWhere("capacity", ">", 0);
+      } else if (params.size === "medium") {
+        cars.where("capacity", "<=", 4);
+      } else if (params.size === "large") {
+        cars.where("capacity", ">", 4);
+      }
     }
 
     return await cars;

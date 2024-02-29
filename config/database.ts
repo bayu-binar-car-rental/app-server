@@ -7,10 +7,14 @@ class Database {
   constructor() {
     this._db = knex({
       client: "postgresql",
+      // connection: {
+      //   database: "chapter_6",
+      //   user: "tama",
+      //   password: "ironman",
+      // },
       connection: {
-        database: "chapter_6",
-        user: "tama",
-        password: "ironman",
+        connectionString:
+          "postgres://binar_car_rental_api_bayu:eOix6VWrSZXy0Sp@binar-car-rental-server-db-bayu.flycast:5432/binar_car_rental_api_bayu?sslmode=disable",
       },
     });
   }

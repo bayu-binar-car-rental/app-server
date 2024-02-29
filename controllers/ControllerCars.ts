@@ -11,13 +11,15 @@ export default class ControllerCars {
   }
 
   root() {
-    return async (req: Request, res: Response) => {
+    return (req: Request, res: Response) => {
+      console.log("Accessing Root...");
       res.json({ message: "Hi there!" });
     };
   }
 
   list() {
     return async (req: Request, res: Response) => {
+      console.log("Accessing database...");
       try {
         const query = req.query;
         let result = (await this._serviceCars.list(query)) as Cars[] | string;

@@ -2,7 +2,7 @@ import Cars, { ICars } from "../models/Cars";
 
 export interface IParams {
   search?: string;
-  availableOnly?: boolean;
+  availableOnly?: string;
   size?: string;
 }
 
@@ -12,7 +12,9 @@ class RepoCars {
   async list(params?: IParams) {
     const cars = Cars.query();
     if (params?.availableOnly) {
-      cars.where("available", true);
+      if (params.availableOnly === "true") {
+        cars.where("available", true);
+      }
     }
 
     if (params?.search) {

@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://bayu-binar-car-rental.netlify.app/",
+  "https://bayu-binar-car-rental.netlify.app",
 ];
 
 class Server {

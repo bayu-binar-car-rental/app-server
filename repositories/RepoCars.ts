@@ -10,7 +10,7 @@ class RepoCars {
   constructor() {}
 
   async list(params?: IParams) {
-    const cars = Cars.query();
+    const cars = Cars.query().orderBy("updated_at", "desc");
     if (params?.availableOnly) {
       if (params.availableOnly === "true") {
         cars.where("available", true);

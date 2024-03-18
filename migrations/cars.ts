@@ -10,14 +10,14 @@ export async function up(knex: Knex): Promise<void> {
     table.integer("rentPerDay").notNullable();
     table.integer("capacity").notNullable();
     table.string("description", 255).notNullable();
-    table.timestamp("availableAt").notNullable().defaultTo(knex.fn.now(6));
+    table.timestamp("availableAt").notNullable();
     table.string("transmission", 255).notNullable();
     table.boolean("available").notNullable();
     table.string("type", 255).notNullable();
     table.integer("year").notNullable();
     table.specificType("options", "text[]").notNullable();
     table.specificType("specs", "text[]").notNullable();
-    table.timestamps().defaultTo(knex.fn.now(6));
+    table.timestamps(true, true);
   });
 }
 

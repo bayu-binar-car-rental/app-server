@@ -12,6 +12,7 @@ class Database {
     this._db = knex({
       client: "pg",
       connection: {
+        // connectionString: "postgres://tama:ironman@localhost/chapter_6",
         connectionString: process.env.DATABASE_URL as string,
       },
     });

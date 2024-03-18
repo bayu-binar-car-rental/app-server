@@ -11,8 +11,8 @@ const config: { [key: string]: Knex.Config } = {
   development: {
     client: "pg",
     connection: {
-      connectionString: "postgres://tama:ironman@localhost/chapter_6",
-      // connectionString: process.env.DATABASE_URL,
+      // connectionString: "postgres://tama:ironman@localhost/chapter_6",
+      connectionString: process.env.DATABASE_URL,
     },
   },
   production: {

@@ -19,6 +19,8 @@ export interface ICars {
   year: number;
   options: string[];
   specs: string[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export default class Cars extends Model {

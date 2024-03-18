@@ -17,6 +17,7 @@ export async function up(knex: Knex): Promise<void> {
     table.integer("year").notNullable();
     table.specificType("options", "text[]").notNullable();
     table.specificType("specs", "text[]").notNullable();
+    table.timestamps();
   });
 }
 

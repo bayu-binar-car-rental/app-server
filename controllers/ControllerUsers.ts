@@ -102,7 +102,7 @@ export default class ControllerUsers {
         if (
           response === "Email already exists" ||
           response === "Username already exists" ||
-          response === "Password's length must be more than 6 characters" ||
+          response === "Password length must be more than 6 characters" ||
           !response
         ) {
           return res.status(401).json({

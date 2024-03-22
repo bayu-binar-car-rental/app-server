@@ -58,7 +58,7 @@ class ServiceUsers {
 
     // Check password
     if (payload.password.length < 6) {
-      return "Password's length must be more than 6 characters";
+      return "Password length must be more than 6 characters";
     }
 
     // Check by username

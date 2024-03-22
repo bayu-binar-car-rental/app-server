@@ -54,7 +54,12 @@ class ServiceUsers {
   }
 
   async create(payload: IRegister) {
-    const { username, email } = payload;
+    const { username, email, password } = payload;
+
+    // Check password
+    if (password.length < 6) {
+      return "Password's length must be more than 6 characters";
+    }
 
     // Check by username
     let user = await this._repoUsers.findByEmail(email);
@@ -68,10 +73,10 @@ class ServiceUsers {
       return "Username already exists";
     }
 
-    const password = encryptPassword(payload.password);
+    const encryptedPassword = encryptPassword(payload.password);
     const response = await this._repoUsers.create({
       ...payload,
-      password: password,
+      password: encryptedPassword,
       role: "member",
     });
 

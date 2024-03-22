@@ -40,7 +40,6 @@ class Server {
 
   public run() {
     this.app.listen(PORT, () => {
-      console.log(process.env.DATABASE_URL);
       console.log(`Server is running on http://localhost:${PORT}`);
     });
   }

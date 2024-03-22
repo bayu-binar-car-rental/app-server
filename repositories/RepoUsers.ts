@@ -33,14 +33,6 @@ class RepoUsers {
   async create(payload: IRegister) {
     const response = await Users.query().insert(payload);
     return response;
-    // const user = await Users.query()
-    //   .where("email", "=", payload.email)
-    //   .orWhere("username", "=", payload.username);
-
-    // if (user.length > 0) {
-    //   console.log("Email or username already exists");
-    //   return false;
-    // }
   }
 }
 

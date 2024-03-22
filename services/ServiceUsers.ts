@@ -72,6 +72,7 @@ class ServiceUsers {
     const response = await this._repoUsers.create({
       ...payload,
       password: password,
+      role: "member",
     });
 
     return response;

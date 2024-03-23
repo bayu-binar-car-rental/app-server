@@ -108,6 +108,7 @@ export default class ControllerUsers {
   create() {
     return async (req: Request, res: Response) => {
       try {
+        console.log("Body:", req.body);
         const response = await this._serviceUsers.create(req.body);
 
         if (

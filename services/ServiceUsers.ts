@@ -61,6 +61,7 @@ class ServiceUsers {
   async create(payload: IRegister) {
     const { username, email } = payload;
 
+    console.log("Payload:", payload);
     console.log("Password:", payload.password);
 
     // Check password

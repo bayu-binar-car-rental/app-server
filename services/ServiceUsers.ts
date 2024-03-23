@@ -61,6 +61,8 @@ class ServiceUsers {
   async create(payload: IRegister) {
     const { username, email } = payload;
 
+    console.log("Password:", payload.password);
+
     // Check password
     if (payload.password.length < 6) {
       return "Password length must be more than 6 characters";

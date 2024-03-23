@@ -83,9 +83,9 @@ export default class ControllerUsers {
           });
         }
 
-        return res.status(200).json({
+        return res.status(201).json({
           meta: {
-            code: 200,
+            code: 201,
             status: "success",
             success: true,
           },
@@ -108,7 +108,6 @@ export default class ControllerUsers {
   create() {
     return async (req: Request, res: Response) => {
       try {
-        console.log("Body:", req.body);
         const response = await this._serviceUsers.create(req.body);
 
         if (

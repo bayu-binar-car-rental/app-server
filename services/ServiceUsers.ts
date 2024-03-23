@@ -28,6 +28,11 @@ class ServiceUsers {
   }
 
   async login({ email, password }: IParams) {
+    // Validate password
+    if (password.length < 6) {
+      return "Password's length must be more than 6 characters";
+    }
+
     const user = (await this._repoUsers.findByEmail(email)) as unknown as IUser;
     if (!user) {
       console.log("Email not found");

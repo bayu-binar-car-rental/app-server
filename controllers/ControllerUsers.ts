@@ -72,6 +72,17 @@ export default class ControllerUsers {
           });
         }
 
+        if (response === "Password's length must be more than 6 characters") {
+          return res.status(401).json({
+            meta: {
+              code: 401,
+              status: "failed",
+              success: false,
+            },
+            data: response,
+          });
+        }
+
         return res.status(200).json({
           meta: {
             code: 200,

@@ -4,6 +4,7 @@ export interface IParams {
   search?: string;
   availableOnly?: string;
   size?: string;
+  capacity?: string;
 }
 
 class RepoCars {
@@ -31,6 +32,10 @@ class RepoCars {
       } else if (params.size === "large") {
         cars.where("capacity", ">", 4);
       }
+    }
+
+    if (params?.capacity) {
+      cars.where("capacity", ">", +params.capacity);
     }
 
     return await cars;

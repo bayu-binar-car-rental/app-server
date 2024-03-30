@@ -28,7 +28,7 @@ export default class ControllerCars {
         console.log(result.length);
 
         if (result.length < 1) {
-          res.status(401).json({
+          return res.status(401).json({
             meta: {
               success: false,
               code: 401,
@@ -38,7 +38,7 @@ export default class ControllerCars {
           });
         }
 
-        res.status(200).json({
+        return res.status(200).json({
           meta: {
             success: true,
             code: 200,

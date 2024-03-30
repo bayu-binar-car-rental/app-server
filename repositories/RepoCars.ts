@@ -35,7 +35,7 @@ class RepoCars {
     }
 
     if (params?.capacity) {
-      cars.where("capacity", ">", +params.capacity);
+      cars.where("capacity", ">=", +params.capacity);
     }
 
     return await cars;

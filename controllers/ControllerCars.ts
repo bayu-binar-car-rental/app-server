@@ -34,7 +34,6 @@ export default class ControllerCars {
               code: 401,
               message: "failed",
             },
-            data: "Sorry, we cannot find your car.. :(",
           });
         }
 

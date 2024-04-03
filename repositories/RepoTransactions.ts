@@ -27,6 +27,7 @@ class RepoTransactions {
     return transaction;
   }
 
+  // Testing
   async update(id: number, params: ITransactions) {
     const transaction = await Transactions.query().findById(id).patch(params);
     return transaction;

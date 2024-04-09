@@ -42,13 +42,16 @@ class ServiceUsers {
 
     const validatePassword = comparePassword(password, user.password);
     if (!validatePassword) {
-      console.log("Password doesn't match");
-      console.log(validatePassword);
       return validatePassword;
     }
 
     const token = jwt.sign(
-      { username: user.username, email: user.email, role: user.role },
+      {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      },
       process.env.JWT_SECRET_KEY as string,
       {
         expiresIn: "1h",

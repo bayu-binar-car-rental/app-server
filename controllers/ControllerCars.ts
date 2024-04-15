@@ -20,12 +20,9 @@ export default class ControllerCars {
 
   list() {
     return async (req: Request, res: Response) => {
-      console.log("Accessing database...");
       try {
         const query = req.query;
         let result = (await this._serviceCars.list(query)) as Cars[] | string;
-
-        console.log(result.length);
 
         if (result.length < 1) {
           return res.status(401).json({
@@ -177,7 +174,6 @@ export default class ControllerCars {
 
   upload() {
     return async (req: Request, res: Response) => {
-      console.log("Running upload function");
       try {
         if (req.file) {
           console.log(req.file);

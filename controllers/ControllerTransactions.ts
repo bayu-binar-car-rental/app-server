@@ -101,14 +101,17 @@ class ControllerTransactions {
         const params: ITransactions = req.body;
         const today = new Date();
         const tomorrow = new Date(today.getTime() + 86400000);
-        const transaction = await this._serviceTransactions.create({
+        const payload = {
           ...params,
           idUser: Number(params.idUser),
           idCar: Number(params.idCar),
-          paymentDeadline: tomorrow.toLocaleString(),
-          created_at: today.toLocaleString(),
-          updated_at: today.toLocaleString(),
-        });
+          paymentDeadline: tomorrow,
+          created_at: today,
+          updated_at: today,
+        };
+
+        const transaction = await this._serviceTransactions.create(payload);
+
         if (!transaction) {
           return ResponseBuilder.response({
             res,
@@ -143,8 +146,9 @@ class ControllerTransactions {
         const today = new Date();
         const transaction = await this._serviceTransactions.update(id, {
           ...params,
-          updated_at: today.toLocaleString(),
+          updated_at: today,
         });
+
         if (!transaction) {
           return ResponseBuilder.response({
             res,

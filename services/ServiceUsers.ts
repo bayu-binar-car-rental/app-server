@@ -22,7 +22,6 @@ class ServiceUsers {
   }
 
   async list() {
-    console.log(process.env.JWT_SECRET_KEY);
     const users = await this._repoUsers.list();
     return users;
   }

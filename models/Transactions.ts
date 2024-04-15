@@ -14,10 +14,12 @@ export interface ITransactions {
   totalPassenger?: number;
   paymentMethod?: number;
   paymentStatus?: "ongoing" | "success" | "failed" | "rejected";
-  paymentDeadline?: string;
+  paymentDeadline?: Date;
   paymentProcessingDeadline?: string;
-  created_at?: string;
-  updated_at?: string;
+  paymentProofImage?: string;
+  paymentInvoice?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export default class Transactions extends Model {

@@ -112,6 +112,8 @@ class ControllerTransactions {
 
         const transaction = await this._serviceTransactions.create(payload);
 
+        console.log(transaction);
+
         if (!transaction) {
           return ResponseBuilder.response({
             res,
@@ -148,8 +150,6 @@ class ControllerTransactions {
           ...params,
           updated_at: today,
         });
-
-        console.log(transaction);
 
         if (!transaction) {
           return ResponseBuilder.response({

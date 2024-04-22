@@ -12,11 +12,23 @@ const config: { [key: string]: Knex.Config } = {
     connection: {
       connectionString: process.env.DATABASE_URL as string,
     },
+    migrations: {
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeds",
+    },
   },
   production: {
     client: "pg",
     connection: {
       connectionString: process.env.DATABASE_URL as string,
+    },
+    migrations: {
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeds",
     },
   },
 };

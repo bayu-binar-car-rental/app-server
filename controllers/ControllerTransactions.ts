@@ -149,6 +149,8 @@ class ControllerTransactions {
           updated_at: today,
         });
 
+        console.log(transaction);
+
         if (!transaction) {
           return ResponseBuilder.response({
             res,
